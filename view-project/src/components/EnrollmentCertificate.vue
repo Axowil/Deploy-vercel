@@ -128,8 +128,12 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { RouterLink } from 'vue-router'
+import { ref, computed, onMounted } from 'vue' // Añadimos onMounted
+import { RouterLink, useRouter, useRoute } from 'vue-router' // Añadimos useRouter y useRoute
+
+// Inicializamos las herramientas de la URL
+const router = useRouter()
+const route = useRoute()
 
 // Modifica la constante BASE_URL para que quede así:
 const BASE_URL = '/api-backend/restful/enrollment-certificate/'
@@ -152,6 +156,8 @@ const emissionDate = computed(() => {
 })
 
 async function fetchCertificate() {
+
+  router.push({query : {cui: cuiInput.value}})
   if (!cuiInput.value) return
   loading.value  = true
   error.value    = null
@@ -171,6 +177,15 @@ async function fetchCertificate() {
     loading.value = false
   }
 }
+
+onMounted(() => {
+  // Verificamos si existe un "?cui=" en la barra de direcciones
+  if (route.query.cui) {
+    cuiInput.value = route.query.cui // Rellenamos el input visualmente
+    fetchCertificate()               
+  }
+})
+
 </script>
 
 <style scoped>
