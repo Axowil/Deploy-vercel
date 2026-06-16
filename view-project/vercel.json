@@ -2,8 +2,8 @@
   "version": 2,
   "rewrites": [
     {
-      "source": "/api-backend/:path*",
-      "destination": "https://sisacad-enrollments-backend.vercel.app/:path*"
+      "source": "/api-backend/restful/enrollment-certificate/",
+      "destination": "https://sisacad-enrollments-backend.vercel.app/restful/enrollment-certificate/"
     }
   ]
-} 
+}
