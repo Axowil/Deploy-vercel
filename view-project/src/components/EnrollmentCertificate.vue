@@ -131,7 +131,8 @@
 import { ref, computed } from 'vue'
 import { RouterLink } from 'vue-router'
 
-const BASE_URL = 'https://sisacad-enrollments-backend.vercel.app/restful/enrollment-certificate/'
+// Modifica la constante BASE_URL para que quede así:
+const BASE_URL = '/api-backend/restful/enrollment-certificate/'
 
 const cuiInput = ref('')
 const loading  = ref(false)
